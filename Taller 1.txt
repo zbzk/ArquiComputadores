@@ -56,7 +56,7 @@ add %l3, 3, %l3;
 10 10011 000000 10011 1 00000000 00011
     
 sub %l1, %l3, %l3;
--- 10011 ------ 10001 0 00000000 10011
+10 10011 000100 10001 0 00000000 10011
 
 add %l2, 3, %l2;
 10 10010 000000 10010 1 00000000 00011
@@ -122,14 +122,20 @@ op  rd     op3   Rs1  i ___8____  Rs2
 10 10100 000000 00000 1 00000000 00000
 
 10 10001 000000 10001 1 00000001 01000
--- 10010 ------ 10010 0 00000000 10011
+10 10010 000100 10010 0 00000000 10011
 10 10100 000000 10001 0 00000000 10010
 10 01000 000000 00000 1 00000000 00000
 
 6. Inicializar las siguientes variables negativas usando OR.
+
 n=-12,
+or %g0, -12, %L1;
+
 a=-11,
+or %g0, -11, %L2;
+
 b=-14.
+or %g0, -14, %L3;
 
 	Ejemplo: recuerde que me confundi con respecto a 
 	inicialización de una variable negativa, enmiendo mi error asi que les dejo
