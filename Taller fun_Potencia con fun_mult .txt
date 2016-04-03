@@ -1,0 +1,58 @@
+Este taller les subirá una unidad (1.0) para el primer parcial, quiero que lo hagan a conciencia, tómense la tarea de sentarse, programarlo y probarlo.
+
+La idea es que desarrollen un programa que calcule la potencia de dos números enteros sin signo, usando a la vez la función mult del parcial, cuando lo tengan programado, sigan los siguientes pasos: 
+
+1. escriba el programa potencia en lenguaje de alto nivel. 
+
+int mult(int a, int b){
+   int n=0;
+   for (int i=0; i<=b; i++){
+       n += a;
+       }
+   return n;
+}
+
+int potencia(int x, int y){
+   int m=1;
+   for (int i=0; i<=b; i++){
+        m = mult(m, x);
+        }
+   return m;
+}
+
+2. escriba el programa potencia en lenguaje de bajo nivel (Ensamblador)
+
+    <MULT>
+0x0000|MOV 0, %L0
+0x0004|MOV 0, %L1
+    <FOR1>
+0x0008|CMP %L1, %I0
+0x000C|BG ,a, EXIT1
+0x0010|ADD %L0, %I2, %L0
+0x0014|MOV %L0, %O0
+0x0018|BA ,a FOR1
+0x001C|ADD %L1, 1, %L1
+    <EXIT1>
+0x0020|MOV %L0, %O0
+
+    <POTENCIA>
+0x0024|MOV 0, %I2
+0x0028|MOV 0, %L2
+    <FOR2>
+0x002C|CMP %L2, %I1
+0x0030|BG ,a, EXIT2
+0x0034|CALL MULT
+0x0038|MOV %O0, %I2
+0x003C|BA FOR2
+0x0040|ADD %L2, 1, %L2
+    <EXIT2>
+0x0044|MOV %I2, %O0
+
+
+3. escriba el  programa potencia en lenguaje de máquina   (Usando los formatos correspondientes y sus códigos en binario).
+
+Importante recuerden que las funciones reciben parámetros de entrada así que deben usar los registros de entrada que son %i0 hasta %i7.
+
+PD: me lo deben entregar, manual y a su vez subirlo a github. Tienen plazo hasta el día 5 de abril horario de clase. Espero que tenga un excelente día chic@s.
+
+Por favor si saben de personas que aun no les llegan mis correos, por favor reenviarlo.
