@@ -1,10 +1,11 @@
-Este taller les subirá una unidad (1.0) para el primer parcial, quiero que lo hagan a conciencia, tómense la tarea de sentarse, programarlo y probarlo.
+FELIPE VALENCIA TREJOS 
+CC.: 1088301210
 
-La idea es que desarrollen un programa que calcule la potencia de dos números enteros sin signo, usando a la vez la función mult del parcial, cuando lo tengan programado, sigan los siguientes pasos: 
+Desarrollar un programa que calcule la potencia de dos números enteros sin signo, usando a la vez la función multiplicar usando sumas
 
 1. escriba el programa potencia en lenguaje de alto nivel. 
 
-int mult(int a, int b){
+int multi(int a, int b){
    int n=0;
    for (int i=0; i<=b; i++){
        n += a;
@@ -15,44 +16,70 @@ int mult(int a, int b){
 int potencia(int x, int y){
    int m=1;
    for (int i=0; i<=b; i++){
-        m = mult(m, x);
+        m = multi(m, x);
         }
    return m;
 }
 
+
 2. escriba el programa potencia en lenguaje de bajo nivel (Ensamblador)
 
-    <MULT>
-0x0000|MOV 0, %L0
-0x0004|MOV 0, %L1
+    <MULTI>
+1)  0x0000 | MOV 0, %L0
+2)  0x0004 | MOV 0, %L1
     <FOR1>
-0x0008|CMP %L1, %I0
-0x000C|BG ,a, EXIT1
-0x0010|ADD %L0, %I2, %L0
-0x0014|MOV %L0, %O0
-0x0018|BA ,a FOR1
-0x001C|ADD %L1, 1, %L1
+3)  0x0008 | CMP %L1, %I0
+4)  0x000C | BG ,a, EXIT1
+5)  0x0010 | ADD %L0, %I2, %L0
+6)  0x0014 | MOV %L0, %O0
+7)  0x0018 | BA ,a FOR1
+8)  0x001C | ADD %L1, 1, %L1
     <EXIT1>
-0x0020|MOV %L0, %O0
+9)  0x0020 | MOV %L0, %O0
 
     <POTENCIA>
-0x0024|MOV 0, %I2
-0x0028|MOV 0, %L2
+10) 0x0024 | MOV 0, %I2
+11) 0x0028 | MOV 0, %L2
     <FOR2>
-0x002C|CMP %L2, %I1
-0x0030|BG ,a, EXIT2
-0x0034|CALL MULT
-0x0038|MOV %O0, %I2
-0x003C|BA FOR2
-0x0040|ADD %L2, 1, %L2
+12) 0x002C | CMP %L2, %I1
+13) 0x0030 | BG ,a, EXIT2
+14) 0x0034 | CALL MULTI
+15) 0x0038 | MOV %O0, %I2
+16) 0x003C | BA FOR2
+17) 0x0040 | ADD %L2, 1, %L2
     <EXIT2>
-0x0044|MOV %I2, %O0
+18) 0x0044 | MOV %I2, %O0
+
 
 
 3. escriba el  programa potencia en lenguaje de máquina   (Usando los formatos correspondientes y sus códigos en binario).
 
-Importante recuerden que las funciones reciben parámetros de entrada así que deben usar los registros de entrada que son %i0 hasta %i7.
+    OP   RD   OP3    RS1  I ___8____  RS2 
+1)  10 10000 000010 00000 1 00000000 00000
+2)  10 10001 000010 00000 1 00000000 00000
+3)  10 00000 010100 10001 0 00000000 11000
+    OP A COND     ________IMM 22________
+4)  00 1 1010 010 0000000000000000000100
+    OP   RD   OP3    RS1  I ___8____  RS2
+5)  10 10000 000000 10000 0 00000000 11010
+6)  10 01000 000010 00000 0 00000000 10000
+    OP A COND     ________IMM 22________
+7)  00 1 1000 010 1111111111111111111100
+    OP   RD   OP3    RS1  I ___8____  RS2 
+8)  10 10001 000000 10001 1 00000000 00001
+9)  10 01000 000010 00000 0 00000000 10000
+10) 10 11010 000010 00000 1 00000000 00000
+11) 10 10010 000010 00000 1 00000000 00000
+12) 10 00000 010100 10010 0 00000000 11010
+    OP A COND     ________IMM 22________
+13) 00 1 1010 010 0000000000000000000100
+    OP ___________IMM 30_____________
+14) 01 111111111111111111111111110011
+    OP   RD   OP3    RS1  I ___8____  RS2 
+15) 10 11010 000010 00000 0 00000000 01000
+    OP A COND     ________IMM 22________
+16) 00 1 1000 010 1111111111111111111100
+    OP   RD   OP3    RS1  I ___8____  RS2 
+17) 10 10010 000000 10010 1 00000000 00001
+18) 10 01000 000010 00000 0 00000000 11010
 
-PD: me lo deben entregar, manual y a su vez subirlo a github. Tienen plazo hasta el día 5 de abril horario de clase. Espero que tenga un excelente día chic@s.
-
-Por favor si saben de personas que aun no les llegan mis correos, por favor reenviarlo.
